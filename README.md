@@ -38,9 +38,56 @@ Numbers: [22, 31, -55, 0, 4, 55]
 
 ### Análise da complexidade assintótica pelo método de contagem de operações
 
+1) Número de chamadas recursivas
+Consideraremos aqui *n* o número de elementos do array de input (`len(numbers)`). A cada chamada de recursão, o algoritmo realiza duas chamadas recursivas para cada valor de n.
+
+O número total de chamadas é proporcional ao número de nós dessa árvore, que cresce
+exponencialmente com n.
+
+O Total de chamadas recursivas: *2<sup>n</sup>*
+
+2) Operações por chamada
+Cada chamada realiza:
+- uma divisão para encontrar o elemento no meio do array (1)
+- duas comparações para encontrar o máximo e o mínimo (2)
+
+Temos então um número fixo de 3 operações por chamada.
+
+3) Total de operações
+
+O total de operações é proporcional ao número de chamadas recursivas * o número de operações por chamada. Portanto: 3 * 2<sup>n</sup>
+
+Usando a notação Big O, temos que a complexidade assintótica é O(2<sup>n</sup>).
+
 ### Análise da complexidade assintótica pela aplicação do Teorema Mestre
 
+A fórmula do Teorema Mestre é 
+
+T(n) = a * T(n/b) + f(n)
+
+Em que:
+- a = o número de subproblemas gerados na recorrência,
+- b = o fator pelo qual o tamanho do problema é reduzido em cada nível da recursão
+- f(n) = o custo do trabalho feito fora das chamadas recursivas
+
+Assim, temos que a nossa fórmula é:
+
+T(n) = 2T(n/2) + O(1)
+
+p = log<sub>b</sub>a
+p = log<sub>2</sub> = 1
+
+Neste caso, como o custo da recursão domina, temos o caso 1:
+
+T(n) = Θ(n<sup>log<sub>b</sub>a</sup>)
+
+Ou seja:
+
+T(n) = Θ(n<sup>1</sup>) = Θ(n)
+
 ## Documentação e links úteis
+Progressão Geométrica: https://www.todamateria.com.br/progressao-geometrica/ 
+Teorema MEstre: https://pt.wikipedia.org/wiki/Teorema_mestre_(an%C3%A1lise_de_algoritmos)
 
 ## Licença
 Este projeto está licenciado sob a Licença MIT.
